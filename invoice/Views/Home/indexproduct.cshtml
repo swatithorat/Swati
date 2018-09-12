@@ -1,0 +1,56 @@
+﻿@model IEnumerable<invoice.Models.tblproduct>
+
+@{
+    ViewBag.Title = "indexproduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Product List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "addproduct")
+</p>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.Label("Product ID")
+            </th>
+            <th>
+                @Html.Label("Item Name")
+            </th>
+            <th>
+                @Html.Label("Item Price")
+            </th>
+            <th>
+                @Html.Label("Serial No")
+            </th>
+            <th>
+                @Html.Label("Edit/Delete")
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.idproduct)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.srno)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "editproduct", new { id = item.idproduct }) |
+                    @Html.ActionLink("Delete", "deleteproduct", new { id = item.idproduct })
+                </td>
+            </tr>
+        }
+
+    </table>
